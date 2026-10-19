@@ -170,7 +170,7 @@
 
   <!-- ==================== ROW 8: DUAL REQUEST PATH FOOTER ==================== -->
   <!-- Left: Cloud & GitOps Path -->
-  <text x="24" y="1648" font-size="14" font-weight="700" fill="#0369a1">CLOUD & GITOPS PATH</text>
+  <text x="24" y="1648" font-size="14" font-weight="700" fill="#0369a1">CLOUD + GITOPS PATH</text>
   <text x="24" y="1684" font-size="22" font-weight="700" fill="#0f172a">https://argocd.ergoshear.dev</text>
   <text x="24" y="1720" font-size="18" font-weight="600" fill="#0369a1">DNS -> k3s EIP :443 -> ServiceLB -> Traefik -> Argo CD</text>
   <text x="24" y="1758" font-size="15" fill="#475569">
