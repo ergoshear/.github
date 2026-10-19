@@ -16,10 +16,10 @@ step should probably be code.
 
 ## The map (not a treasure map, but there is YAML)
 
-[![ergoshear architecture: three repositories deploying AWS infrastructure, Salt configuration, and a k3s platform](assets/cluster-architecture.svg)](assets/cluster-architecture.svg)
+[![ergoshear architecture: three repositories deploying AWS infrastructure, Salt configuration, and a k3s platform](profile/assets/cluster-architecture.svg)](profile/assets/cluster-architecture.svg)
 
-[Open the full-size diagram](assets/cluster-architecture.svg) ·
-[Download the editable Excalidraw source](assets/cluster-architecture.excalidraw)
+[Open the full-size diagram](profile/assets/cluster-architecture.svg) ·
+[Download the editable Excalidraw source](profile/assets/cluster-architecture.excalidraw)
 
 Architecture snapshot: October 19, 2026. The repositories are the source of truth.
 
