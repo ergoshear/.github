@@ -1,13 +1,5 @@
 ![ergoshear](assets/ergoshear.jpg)
 
-# Welcome to ergoshear
-
-Small cluster. Big "I can automate that" energy.
-
-This is where cloud infrastructure, configuration management, Kubernetes, and
-bare-metal GPU inference meet, compare YAML, and agree that the next manual
-step should probably be code.
-
 ## Three repos, one tiny platform
 
 | Repo | Job description |
