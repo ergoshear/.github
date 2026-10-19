@@ -44,4 +44,27 @@ Architecture snapshot: October 19, 2026. The repositories are the source of trut
 Write it down. Put it in Git. Automate the boring bits.
 Leave the interesting failures educational.
 
+## Local inference
+
+All three bare-metal MLOps nodes run containerized `llama-server` routers under
+`systemd --user`, managed with SaltStack.
+
+### Verified benchmarks on `mlops-node-6`
+
+RTX 4090 (24 GB GDDR6X), with 64 GB DDR5:
+
+| Preset | Context window | Capabilities | Verified speed |
+| --- | --- | --- | ---: |
+| `Muse-Glimmer-30B-Vision` | 98,304 tokens (96K, `q8_0` KV) | Multimodal vision (`mmproj`) + 15-token DFlash | 119.22 tok/s |
+| `Muse-Glimmer-30B-128K` | 131,072 tokens (128K, `q8_0` KV) | Native max context + 15-token DFlash (85.5% acceptance) | 104.34 tok/s |
+| `Muse-Glimmer-30B-256K-VRAM` | 262,144 tokens (256K, `q4_0` KV + YaRN 2.0x) | Quarter-million-token context fully in VRAM + DFlash (84.9% acceptance) | 96.42 tok/s |
+
+### Three-node cluster
+
+| Node | Hardware | Primary models and presets | Verified performance |
+| --- | --- | --- | --- |
+| `mlops-node-6.lan` | RTX 4090 (24 GB GDDR6X) + 64 GB DDR5 | `Muse-Glimmer-30B` (128K, 256K-VRAM, Vision, 512K-Hybrid) + DFlash (`n=15`) | 96–119 tok/s |
+| `mlops-node-7.lan` (`192.168.202.17`) | Strix Halo EVO-X2 (128 GB LPDDR5X) | `Qwen3-Coder-30B-A3B` (128K) and `Qwen3.8-Flash-Next` (128K + `ggml-org` MTP) | 64 tok/s (Coder) / 42.8 tok/s (Flash-Next) |
+| `mlops-node-9.lan` (`192.168.202.19`) | Strix Halo (192 GB LPDDR5X) | `Qwen3.8-27B` (256K Sharp) and `GLM-5.3-Flash` (128K) | Full 256K context resident |
+
 Built in public, one carefully indented adventure at a time.
