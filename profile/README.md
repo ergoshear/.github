@@ -1,3 +1,5 @@
+![ergoshear](assets/ergoshear.jpg)
+
 # Welcome to ergoshear
 
 Small cluster. Big "I can automate that" energy.
