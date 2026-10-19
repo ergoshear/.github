@@ -1,2 +1,191 @@
-<?xml version='1.0' encoding='utf-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="4 -6 1032 1151.0" width="1032" height="1151.0" role="img" aria-labelledby="title description"><title id="title">ergoshear infrastructure and deployment architecture</title><desc id="description">Three repositories manage AWS infrastructure, Salt configuration, and k3s. Route 53, ExternalDNS, cert-manager, and Traefik provide HTTPS to Argo CD.</desc><rect x="4" y="-6" width="1032" height="1151.0" fill="#ffffff" /><defs><marker id="arrow-infra-deploy" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 1 1 L 11 6 L 1 11" fill="none" stroke="#1d4ed8" /></marker><marker id="arrow-salt-instance" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 1 1 L 11 6 L 1 11" fill="none" stroke="#1d4ed8" /></marker><marker id="arrow-k3s-instance" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 1 1 L 11 6 L 1 11" fill="none" stroke="#1d4ed8" /></marker><marker id="arrow-highstate" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 1 1 L 11 6 L 1 11" fill="none" stroke="#047857" /></marker><marker id="arrow-token" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 1 1 L 11 6 L 1 11" fill="none" stroke="#047857" /></marker><marker id="arrow-tls-api" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 1 1 L 11 6 L 1 11" fill="none" stroke="#b45309" /></marker><marker id="arrow-dns-link" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 1 1 L 11 6 L 1 11" fill="none" stroke="#b45309" /></marker></defs><text fill="#0f172a" font-family="Arial, Helvetica, sans-serif" font-size="32"><tspan x="24" y="46.0">Small cluster. Everything connected.</tspan></text><text fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="17"><tspan x="24" y="81.0">ergoshear / AWS + Salt + k3s / October 2026</tspan></text><rect x="24" y="110" width="312" height="164" fill="#eff6ff" stroke="#eff6ff" stroke-width="1.5" rx="16" /><text fill="#1d4ed8" font-family="Arial, Helvetica, sans-serif" font-size="23"><tspan x="44" y="149.0">01 / aws</tspan></text><text fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="16"><tspan x="44" y="182.0">Terraform + Terragrunt</tspan><tspan x="44" y="204.4">PR: plan / main: apply</tspan><tspan x="44" y="226.8">GitHub OIDC + S3 state</tspan></text><rect x="364" y="110" width="312" height="164" fill="#ecfdf5" stroke="#ecfdf5" stroke-width="1.5" rx="16" /><text fill="#047857" font-family="Arial, Helvetica, sans-serif" font-size="23"><tspan x="384" y="149.0">02 / salt</tspan></text><text fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="16"><tspan x="384" y="182.0">Local highstate: test, then apply</tspan><tspan x="384" y="204.4">Runner: salt-master-01</tspan><tspan x="384" y="226.8">Checkout serves states + pillar</tspan></text><rect x="704" y="110" width="312" height="164" fill="#f5f3ff" stroke="#f5f3ff" stroke-width="1.5" rx="16" /><text fill="#7c3aed" font-family="Arial, Helvetica, sans-serif" font-size="23"><tspan x="724" y="149.0">03 / k3s</tspan></text><text fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="16"><tspan x="724" y="182.0">main: server-side Kustomize apply</tspan><tspan x="724" y="204.4">Runner: k3s-control-plane-01</tspan><tspan x="724" y="226.8">Argo CD + platform services</tspan></text><polyline points="180,274 180,324" fill="none" stroke="#1d4ed8" stroke-width="1.5" marker-end="url(#arrow-infra-deploy)" /><text fill="#1d4ed8" font-family="Arial, Helvetica, sans-serif" font-size="14"><tspan x="198" y="297.0">provision</tspan></text><rect x="24" y="324" width="992" height="112" fill="#eff6ff" stroke="#eff6ff" stroke-width="1.5" rx="16" /><text fill="#1d4ed8" font-family="Arial, Helvetica, sans-serif" font-size="23"><tspan x="44" y="363.0">AWS / us-east-2</tspan></text><text fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="16"><tspan x="44" y="396.0">VPC + public subnet / 2 EC2 hosts / persistent Elastic IPs / security groups / SSM</tspan></text><polyline points="240,436 240,484" fill="none" stroke="#1d4ed8" stroke-width="1.5" marker-end="url(#arrow-salt-instance)" /><polyline points="800,436 800,484" fill="none" stroke="#1d4ed8" stroke-width="1.5" marker-end="url(#arrow-k3s-instance)" /><rect x="24" y="484" width="432" height="270" fill="#ecfdf5" stroke="#ecfdf5" stroke-width="1.5" rx="16" /><text fill="#047857" font-family="Arial, Helvetica, sans-serif" font-size="23"><tspan x="44" y="523.0">salt.ergoshear.dev</tspan></text><text fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="16"><tspan x="44" y="556.0">salt-master-01 / Fedora arm64 / t4g.small</tspan><tspan x="44" y="578.4" /><tspan x="44" y="600.8">Salt master + minion + self-hosted runner</tspan><tspan x="44" y="623.2">Schedules all-minion highstate every 5 min</tspan><tspan x="44" y="645.6">Packages + TuneD aws profile on both hosts</tspan><tspan x="44" y="668.0">Receives k3s token via cp.push</tspan><tspan x="44" y="690.4">K3S_TOKEN pillar: all authenticated minions</tspan></text><rect x="584" y="484" width="432" height="270" fill="#f5f3ff" stroke="#f5f3ff" stroke-width="1.5" rx="16" /><text fill="#7c3aed" font-family="Arial, Helvetica, sans-serif" font-size="23"><tspan x="604" y="523.0">k3s.ergoshear.dev</tspan></text><text fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="16"><tspan x="604" y="556.0">k3s-control-plane-01 / arm64 / t4g.medium</tspan><tspan x="604" y="578.4" /><tspan x="604" y="600.8">Salt installs k3s + CLI tools</tspan><tspan x="604" y="623.2">Control-plane: NoSchedule taint</tspan><tspan x="604" y="645.6">Platform pods have explicit tolerations</tspan><tspan x="604" y="668.0">Argo CD + Traefik + k3s ServiceLB</tspan><tspan x="604" y="690.4">ExternalDNS + cert-manager</tspan></text><polyline points="456,580 584,580" fill="none" stroke="#047857" stroke-width="1.5" marker-end="url(#arrow-highstate)" /><text fill="#047857" font-family="Arial, Helvetica, sans-serif" font-size="14"><tspan x="476" y="562.0">highstate</tspan></text><polyline points="584,658 456,658" fill="none" stroke="#047857" stroke-width="1.5" marker-end="url(#arrow-token)" stroke-dasharray="8 6" /><text fill="#047857" font-family="Arial, Helvetica, sans-serif" font-size="14"><tspan x="477" y="640.0">cp.push</tspan></text><polyline points="800,754 800,804" fill="none" stroke="#b45309" stroke-width="1.5" marker-end="url(#arrow-tls-api)" stroke-dasharray="8 6" /><text fill="#b45309" font-family="Arial, Helvetica, sans-serif" font-size="14"><tspan x="300" y="773.0">Route 53 API / instance IAM role</tspan></text><rect x="24" y="804" width="484" height="160" fill="#fffbeb" stroke="#fffbeb" stroke-width="1.5" rx="16" /><text fill="#b45309" font-family="Arial, Helvetica, sans-serif" font-size="23"><tspan x="44" y="843.0">DNS / Route 53</tspan></text><text fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="16"><tspan x="44" y="876.0">Terraform: host A records point to persistent EIPs</tspan><tspan x="44" y="898.4">ExternalDNS: argocd CNAME points to k3s hostname</tspan><tspan x="44" y="920.8">TXT registry + sync / scoped to ergoshear.dev</tspan></text><rect x="532" y="804" width="484" height="160" fill="#f0f9ff" stroke="#f0f9ff" stroke-width="1.5" rx="16" /><text fill="#0369a1" font-family="Arial, Helvetica, sans-serif" font-size="23"><tspan x="552" y="843.0">TLS / Let's Encrypt</tspan></text><text fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="16"><tspan x="552" y="876.0">cert-manager: Route 53 DNS-01 validation</tspan><tspan x="552" y="898.4">Traefik terminates HTTPS on port 443</tspan><tspan x="552" y="920.8">Argo CD receives HTTP inside the cluster</tspan></text><polyline points="800,782 266,782 266,804" fill="none" stroke="#b45309" stroke-width="1.5" marker-end="url(#arrow-dns-link)" stroke-dasharray="8 6" /><text fill="#0369a1" font-family="Arial, Helvetica, sans-serif" font-size="14"><tspan x="24" y="1006.0">THE REQUEST PATH</tspan></text><text fill="#0f172a" font-family="Arial, Helvetica, sans-serif" font-size="22"><tspan x="24" y="1041.0">https://argocd.ergoshear.dev</tspan></text><text fill="#0369a1" font-family="Arial, Helvetica, sans-serif" font-size="20"><tspan x="24" y="1080.0">DNS -&gt; k3s Elastic IP :443 -&gt; ServiceLB -&gt; Traefik -&gt; Argo CD</tspan></text><text fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="15"><tspan x="24" y="1119.0">GitHub Actions deploy Argo CD Argo CD config: auto-sync, prune, self-heal</tspan></text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 1810" width="1040" height="1810" font-family="system-ui, -apple-system, &#39;Segoe UI&#39;, Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9" fill="none" stroke="#1d4ed8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9" fill="none" stroke="#047857" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9" fill="none" stroke="#b45309" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1040" height="1810" fill="#ffffff" />
+
+  <!-- Header -->
+  <text x="24" y="46" font-size="32" font-weight="700" fill="#0f172a">Small cluster. Everything connected.</text>
+  <text x="24" y="82" font-size="17" fill="#475569">ergoshear / AWS + Salt + k3s + Bare-Metal MLOps / October 2026</text>
+
+  <!-- ==================== ROW 1: THREE REPOS ==================== -->
+  <!-- 01 / aws -->
+  <rect x="24" y="110" width="312" height="164" rx="12" fill="#eff6ff" stroke="#eff6ff" stroke-width="1.5" />
+  <text x="44" y="150" font-size="23" font-weight="700" fill="#1d4ed8">01 / aws</text>
+  <text x="44" y="184" font-size="16" fill="#334155">
+    <tspan x="44" dy="0">Terraform + Terragrunt</tspan>
+    <tspan x="44" dy="22.4">PR: plan / main: apply</tspan>
+    <tspan x="44" dy="22.4">GitHub OIDC + S3 state</tspan>
+  </text>
+
+  <!-- 02 / salt -->
+  <rect x="364" y="110" width="312" height="164" rx="12" fill="#ecfdf5" stroke="#ecfdf5" stroke-width="1.5" />
+  <text x="384" y="150" font-size="23" font-weight="700" fill="#047857">02 / salt</text>
+  <text x="384" y="184" font-size="16" fill="#334155">
+    <tspan x="384" dy="0">Local highstate: test, then apply</tspan>
+    <tspan x="384" dy="22.4">Runner: salt-master-01</tspan>
+    <tspan x="384" dy="22.4">k3s + bare-metal MLOps GPU states</tspan>
+  </text>
+
+  <!-- 03 / k3s -->
+  <rect x="704" y="110" width="312" height="164" rx="12" fill="#f5f3ff" stroke="#f5f3ff" stroke-width="1.5" />
+  <text x="724" y="150" font-size="23" font-weight="700" fill="#7c3aed">03 / k3s</text>
+  <text x="724" y="184" font-size="16" fill="#334155">
+    <tspan x="724" dy="0">main: server-side Kustomize apply</tspan>
+    <tspan x="724" dy="22.4">Runner: k3s-control-plane-01</tspan>
+    <tspan x="724" dy="22.4">Argo CD + platform services</tspan>
+  </text>
+
+  <!-- Arrow: 01 / aws -> AWS / us-east-2 -->
+  <line x1="180" y1="274" x2="180" y2="322" stroke="#1d4ed8" stroke-width="1.5" marker-end="url(#arrow-blue)" />
+  <text x="198" y="298" font-size="14" fill="#1d4ed8">provision</text>
+
+  <!-- ==================== ROW 2: AWS FOUNDATION ==================== -->
+  <rect x="24" y="324" width="992" height="112" rx="12" fill="#eff6ff" stroke="#eff6ff" stroke-width="1.5" />
+  <text x="44" y="364" font-size="23" font-weight="700" fill="#1d4ed8">AWS / us-east-2</text>
+  <text x="44" y="398" font-size="16" fill="#334155">VPC + public subnet / 2 EC2 hosts / persistent Elastic IPs / security groups / SSM</text>
+
+  <!-- Arrows: AWS -> EC2 Hosts -->
+  <line x1="240" y1="436" x2="240" y2="482" stroke="#1d4ed8" stroke-width="1.5" marker-end="url(#arrow-blue)" />
+  <line x1="800" y1="436" x2="800" y2="482" stroke="#1d4ed8" stroke-width="1.5" marker-end="url(#arrow-blue)" />
+
+  <!-- ==================== ROW 3: SALT & K3S HOSTS ==================== -->
+  <!-- salt.ergoshear.dev -->
+  <rect x="24" y="484" width="432" height="270" rx="12" fill="#ecfdf5" stroke="#ecfdf5" stroke-width="1.5" />
+  <text x="44" y="524" font-size="23" font-weight="700" fill="#047857">salt.ergoshear.dev</text>
+  <text x="44" y="558" font-size="16" fill="#334155">
+    <tspan x="44" dy="0">salt-master-01 / Fedora arm64 / t4g.small</tspan>
+    <tspan x="44" dy="36">Salt master + minion + self-hosted runner</tspan>
+    <tspan x="44" dy="22.4">Schedules all-minion highstate every 5 min</tspan>
+    <tspan x="44" dy="22.4">TuneD: aws (EC2) / throughput-performance (GPU)</tspan>
+    <tspan x="44" dy="22.4">Tailscale mesh across k3s + bare-metal MLOps</tspan>
+    <tspan x="44" dy="22.4">Receives k3s token via cp.push</tspan>
+  </text>
+
+  <!-- k3s.ergoshear.dev -->
+  <rect x="584" y="484" width="432" height="270" rx="12" fill="#f5f3ff" stroke="#f5f3ff" stroke-width="1.5" />
+  <text x="604" y="524" font-size="23" font-weight="700" fill="#7c3aed">k3s.ergoshear.dev</text>
+  <text x="604" y="558" font-size="16" fill="#334155">
+    <tspan x="604" dy="0">k3s-control-plane-01 / arm64 / t4g.medium</tspan>
+    <tspan x="604" dy="36">Salt installs k3s + CLI tools</tspan>
+    <tspan x="604" dy="22.4">Control-plane: NoSchedule taint</tspan>
+    <tspan x="604" dy="22.4">Platform pods have explicit tolerations</tspan>
+    <tspan x="604" dy="22.4">Argo CD + Traefik + k3s ServiceLB</tspan>
+    <tspan x="604" dy="22.4">ExternalDNS + cert-manager</tspan>
+  </text>
+
+  <!-- Arrows between salt.ergoshear.dev and k3s.ergoshear.dev -->
+  <line x1="456" y1="580" x2="582" y2="580" stroke="#047857" stroke-width="1.5" marker-end="url(#arrow-green)" />
+  <text x="476" y="564" font-size="14" fill="#047857">highstate</text>
+
+  <line x1="584" y1="658" x2="458" y2="658" stroke="#047857" stroke-width="1.5" stroke-dasharray="6,6" marker-end="url(#arrow-green)" />
+  <text x="477" y="642" font-size="14" fill="#047857">cp.push</text>
+
+  <!-- Dashed Route 53 & TLS arrows from k3s.ergoshear.dev -->
+  <line x1="800" y1="754" x2="800" y2="802" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6,6" marker-end="url(#arrow-amber)" />
+  <polyline points="800,782 266,782 266,802" fill="none" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6,6" marker-end="url(#arrow-amber)" />
+  <text x="300" y="774" font-size="14" fill="#b45309">Route 53 API / instance IAM role</text>
+
+  <!-- ==================== ROW 4: DNS & TLS ==================== -->
+  <!-- DNS / Route 53 -->
+  <rect x="24" y="804" width="484" height="160" rx="12" fill="#fffbeb" stroke="#fffbeb" stroke-width="1.5" />
+  <text x="44" y="844" font-size="23" font-weight="700" fill="#b45309">DNS / Route 53</text>
+  <text x="44" y="878" font-size="16" fill="#334155">
+    <tspan x="44" dy="0">Terraform: host A records point to persistent EIPs</tspan>
+    <tspan x="44" dy="22.4">ExternalDNS: argocd CNAME points to k3s hostname</tspan>
+    <tspan x="44" dy="22.4">TXT registry + sync / scoped to ergoshear.dev</tspan>
+  </text>
+
+  <!-- TLS / Let's Encrypt -->
+  <rect x="532" y="804" width="484" height="160" rx="12" fill="#f0f9ff" stroke="#f0f9ff" stroke-width="1.5" />
+  <text x="552" y="844" font-size="23" font-weight="700" fill="#0369a1">TLS / Let's Encrypt</text>
+  <text x="552" y="878" font-size="16" fill="#334155">
+    <tspan x="552" dy="0">cert-manager: Route 53 DNS-01 validation</tspan>
+    <tspan x="552" dy="22.4">Traefik terminates HTTPS on port 443</tspan>
+    <tspan x="552" dy="22.4">Argo CD receives HTTP inside the cluster</tspan>
+  </text>
+
+  <!-- ==================== SPINE TO BARE-METAL MLOPS ==================== -->
+  <line x1="520" y1="964" x2="520" y2="1018" stroke="#047857" stroke-width="1.5" stroke-dasharray="6,6" marker-end="url(#arrow-green)" />
+  <text x="536" y="997" font-size="14" fill="#047857">Tailscale + Salt highstate (mlops.r9700 / rtx-4090 / halo-395 / halo-495)</text>
+
+  <!-- ==================== ROW 5: BARE-METAL MLOPS BANNER ==================== -->
+  <rect x="24" y="1020" width="992" height="112" rx="12" fill="#ecfdf5" stroke="#ecfdf5" stroke-width="1.5" />
+  <text x="44" y="1060" font-size="23" font-weight="700" fill="#047857">Bare-Metal MLOps Inference Fleet / Fedora 44</text>
+  <text x="44" y="1094" font-size="16" fill="#334155">systemd --user routers / Podman CUDA CDI + Toolbx RADV Vulkan / TuneD throughput-performance / OpenAI API :8080/v1</text>
+
+  <!-- ==================== ROW 6: MLOPS NODES 4 & 6 ==================== -->
+  <!-- mlops-node-4.lan -->
+  <rect x="24" y="1156" width="484" height="210" rx="12" fill="#fffbeb" stroke="#fffbeb" stroke-width="1.5" />
+  <text x="44" y="1196" font-size="23" font-weight="700" fill="#b45309">mlops-node-4.lan</text>
+  <text x="44" y="1230" font-size="16" fill="#334155">
+    <tspan x="44" dy="0">Radeon AI PRO R9700 (32 GB GDDR6) + 64 GB RAM</tspan>
+    <tspan x="44" dy="32">Toolbx: vulkan-radv / r9700-llama-router.service</tspan>
+    <tspan x="44" dy="22.4">Gemma-4-31B-it-QAT (256K q8_0 + Vision mmproj)</tspan>
+    <tspan x="44" dy="22.4">Qwen3.6-35B-A3B-MTP (256K q8_0 + 2-token MTP)</tspan>
+    <tspan x="44" dy="22.4">100% resident in 32 GB dedicated RDNA 4 VRAM</tspan>
+  </text>
+
+  <!-- mlops-node-6.lan -->
+  <rect x="532" y="1156" width="484" height="210" rx="12" fill="#ecfdf5" stroke="#ecfdf5" stroke-width="1.5" />
+  <text x="552" y="1196" font-size="23" font-weight="700" fill="#047857">mlops-node-6.lan</text>
+  <text x="552" y="1230" font-size="16" fill="#334155">
+    <tspan x="552" dy="0">GeForce RTX 4090 (24 GB GDDR6X) + 64 GB DDR5</tspan>
+    <tspan x="552" dy="32">Podman CUDA + CDI / rtx4090-llama-router.service</tspan>
+    <tspan x="552" dy="22.4">Muse-Glimmer-30B + 15-token DFlash (85.5% accept)</tspan>
+    <tspan x="552" dy="22.4">Presets: 128K (104.3 t/s) / 256K-VRAM (96.4 t/s)</tspan>
+    <tspan x="552" dy="22.4">Multimodal Vision (119.2 t/s) / 512K-Hybrid</tspan>
+  </text>
+
+  <!-- ==================== ROW 7: MLOPS NODES 7 & 9 ==================== -->
+  <!-- mlops-node-7.lan -->
+  <rect x="24" y="1390" width="484" height="210" rx="12" fill="#f5f3ff" stroke="#f5f3ff" stroke-width="1.5" />
+  <text x="44" y="1430" font-size="23" font-weight="700" fill="#7c3aed">mlops-node-7.lan (192.168.202.17)</text>
+  <text x="44" y="1464" font-size="16" fill="#334155">
+    <tspan x="44" dy="0">Strix Halo EVO-X2 (128 GB LPDDR5X Unified)</tspan>
+    <tspan x="44" dy="32">Toolbx: vulkan-radv / strix-llama-router.service</tspan>
+    <tspan x="44" dy="22.4">Qwen3-Coder-30B-A3B (128K / 64 tok/s instant edit)</tspan>
+    <tspan x="44" dy="22.4">Qwen3.8-Flash-Next 180B MoE + ggml-org MTP</tspan>
+    <tspan x="44" dy="22.4">42.8 tok/s verified (92.7% MTP draft acceptance)</tspan>
+  </text>
+
+  <!-- mlops-node-9.lan -->
+  <rect x="532" y="1390" width="484" height="210" rx="12" fill="#f0f9ff" stroke="#f0f9ff" stroke-width="1.5" />
+  <text x="552" y="1430" font-size="23" font-weight="700" fill="#0369a1">mlops-node-9.lan (192.168.202.19)</text>
+  <text x="552" y="1464" font-size="16" fill="#334155">
+    <tspan x="552" dy="0">Strix Halo (192 GB LPDDR5X Unified)</tspan>
+    <tspan x="552" dy="32">Toolbx: vulkan-radv / strix-llama-router.service</tspan>
+    <tspan x="552" dy="22.4">Qwen3.8-27B Sharp (Low / Medium / NoThink)</tspan>
+    <tspan x="552" dy="22.4">GLM-5.3-Flash (UD-IQ4_XS / 128K context)</tspan>
+    <tspan x="552" dy="22.4">Full 256K q8_0 context resident in unified memory</tspan>
+  </text>
+
+  <!-- ==================== ROW 8: DUAL REQUEST PATH FOOTER ==================== -->
+  <!-- Left: Cloud & GitOps Path -->
+  <text x="24" y="1648" font-size="14" font-weight="700" fill="#0369a1">CLOUD & GITOPS PATH</text>
+  <text x="24" y="1684" font-size="22" font-weight="700" fill="#0f172a">https://argocd.ergoshear.dev</text>
+  <text x="24" y="1720" font-size="18" font-weight="600" fill="#0369a1">DNS -> k3s EIP :443 -> ServiceLB -> Traefik -> Argo CD</text>
+  <text x="24" y="1758" font-size="15" fill="#475569">
+    <tspan x="24" dy="0">GitHub Actions deploy Argo CD</tspan>
+    <tspan x="24" dy="21">Argo CD config: auto-sync, prune, self-heal</tspan>
+  </text>
+
+  <!-- Right: Local Inference Path -->
+  <text x="532" y="1648" font-size="14" font-weight="700" fill="#047857">LOCAL INFERENCE PATH</text>
+  <text x="532" y="1684" font-size="22" font-weight="700" fill="#0f172a">http://mlops-node-{4,6,7,9}.lan:8080/v1</text>
+  <text x="532" y="1720" font-size="18" font-weight="600" fill="#047857">VS Code Copilot -> LAN / Tailscale :8080 -> llama-server</text>
+  <text x="532" y="1758" font-size="15" fill="#475569">
+    <tspan x="532" dy="0">Router mode (--models-max 1): hot-swaps presets on demand</tspan>
+    <tspan x="532" dy="21">Speculative decoding: 15-token DFlash (CUDA) + MTP (Vulkan)</tspan>
+  </text>
+</svg>
